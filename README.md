@@ -8,4 +8,4 @@ Download this repo and open the `index.html` file.
 
 ## Dependencies
 
-This project uses HTML, CSS, Javascript and [Jasmine][https://jasmine.github.io/], a Javascript-based testing framework.
+This project uses HTML, CSS, Javascript and [Jasmine](https://jasmine.github.io/), a Javascript-based testing framework.
