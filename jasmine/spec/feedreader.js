@@ -115,7 +115,7 @@ $(function() {
             console.log(oldFeed);
             loadFeed(1, done);
         });
-
+        
         it('content actually changes', function(done) {
             loadFeed(1, function() {
                 console.log(oldFeed);
