@@ -95,14 +95,14 @@ $(function() {
         });
 
         it('completes its work', function() {
-            const entry = document.querySelector('.entry');
-            expect(entry.children.length > 0).toBe(true);
+            expect(document.querySelectorAll('.feed .entry').length > 0).toBe(true);
         });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        let oldFeed;
+        let feedAfterFirstLoad;
+        let feedAfterSecondLoad;
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
@@ -110,18 +110,17 @@ $(function() {
          */
         
         beforeEach(function(done) {
-            loadFeed(0);
-            oldFeed = document.querySelector('.feed').innerHTML;
-            console.log(oldFeed);
-            loadFeed(1, done);
+            loadFeed(0, function() {
+                feedAfterFirstLoad = document.querySelector('.feed').innerHTML;
+            loadFeed(1, function() {
+                feedAfterSecondLoad = document.querySelector('.feed').innerHTML;
+                done();
+                });
+            });
         });
         
-        it('content actually changes', function(done) {
-            loadFeed(1, function() {
-                console.log(oldFeed);
-                expect(document.querySelector('.feed').innerHTML).not.toEqual(oldFeed);
-                done();
-            });
+        it('content actually changes', function() {
+            expect(feedAfterFirstLoad).not.toEqual(feedAfterSecondLoad);
         });
     });
 }());
